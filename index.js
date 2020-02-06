@@ -20,8 +20,13 @@ client.on('message', message => {
     if (lowercase === 'donuts suck') {
         message.channel.send('No u')
     }
-    if (lowercase.includes('anime')) {
+    if (message.author.id === '674722017659846657') {
+        ;
+    }
+    else {
+        if (lowercase.includes('anime')) {
         message.channel.send('anime is gross, don\'t ever speak of it again')
+        }
     }
 
     // Commands
