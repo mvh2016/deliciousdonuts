@@ -100,7 +100,7 @@ client.on('message', message => {
         }
     }
 
-    if (message.content.startsWith(`${prefix}trainingstart`)) {
+    if (message.content === (`${prefix}trainingstart`)) {
         if (message.member.roles.has('674766572014796818')) {
             var person = message.author
             const tStart = new discord.RichEmbed()
@@ -120,7 +120,7 @@ client.on('message', message => {
         }
     }
 
-    if (message.content.startsWith(`${prefix}trainingend`)) {
+    if (message.content === (`${prefix}trainingend`)) {
         if (message.member.roles.has('674766572014796818')) {
             var person = message.author
             const tEnd = new discord.RichEmbed()
