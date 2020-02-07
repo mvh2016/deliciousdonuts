@@ -30,6 +30,9 @@ client.on('message', message => {
             .addField('`/rscheck`', 'Sends an event check announcement for a recruitment session.', false)
             .addField('`/rsstart <starting time and timezone>`', 'Sends the starting announcement for a recruitment session. \nMake sure to add the starting time and timezone as an argument, i.e. \n/rsstart 18:00 EST', false)
             .addField('`/rsend`', 'Sends the ending message for a recruitment session.', false)
+            .addField('`/trainingstart`', 'Sends the starting announcement for a training.', false)
+            .addField('`/trainingend`', 'Sends the ending message for a training.', false)
+
         message.author.send(helpEmbed)
         message.channel.send('Check your DMs, '+message.author)
         message.react('✅')
@@ -90,6 +93,44 @@ client.on('message', message => {
                 .setDescription('The recruitment session has ended. Thank you to those who attended.')
                 .setFooter('Bot created by CanadianJudgement | Judgement#3155 for help')
             eventChannel.send(rsStart)
+            message.channel.send(':white_check_mark: Announcement has been pushed, '+message.author)
+        }
+        else {
+            message.channel.send(':warning: You are missing the required permissions (Event Host role required) '+message.author)
+        }
+    }
+
+    if (message.content.startsWith(`${prefix}trainingstart`)) {
+        if (message.member.roles.has('674766572014796818')) {
+            var person = message.author
+            const tStart = new discord.RichEmbed()
+                .setTitle(':mega: Delicious Donuts Training Session Starting :mega:')
+                .setDescription('**On behalf of the Delicious Donuts Management team, '+message.author+' is hosting a training right now!**\n\n↣ Promotions will be handled for dedicated and professional staff members!\n↣ LRs and MRs are getting the higher possibility to be promoted.\n↣ HRs and SRs are welcomed to oversee and a deal with problems.\n\n ')
+                .setAuthor(message.member.displayName, person.avatarURL)
+                .addField('**:link: Join Link :link:**', 'https://www.roblox.com/games/4616568591/Delicious-Donutss', false)
+                .setFooter('Bot created by CanadianJudgement | Judgement#3155 for help')
+            trainingChannel = client.channels.get('675375395738222609')
+            trainingChannel.send(tStart)
+            trainingChannel.send('@here')
+            message.channel.send(':white_check_mark: Announcement has been pushed, '+message.author)
+        }
+        else {
+            message.channel.send(':warning: You are missing the required permissions (Event Host role required) '+message.author)
+
+        }
+    }
+
+    if (message.content.startsWith(`${prefix}trainingend`)) {
+        if (message.member.roles.has('674766572014796818')) {
+            var person = message.author
+            const tEnd = new discord.RichEmbed()
+                .setTitle(':mega: Delicious Donuts Training Session Ended :mega:')
+                .setDescription('**On behalf of the Delicious Donuts Management team, '+message.author+' is hosting a training right now!**\n\n↣ Promotions will be handled for dedicated and professional staff members!\n↣ LRs and MRs are getting the higher possibility to be promoted.\n↣ HRs and SRs are welcomed to oversee and a deal with problems.\n\n ')
+                .setAuthor(message.member.displayName, person.avatarURL)
+                .addField('**:link: Join Link :link:**', 'https://www.roblox.com/games/4616568591/Delicious-Donutss', false)
+                .setFooter('Bot created by CanadianJudgement | Judgement#3155 for help')
+            trainingChannel = client.channels.get('675375395738222609')
+            trainingChannel.send(tEnd)
             message.channel.send(':white_check_mark: Announcement has been pushed, '+message.author)
         }
         else {
