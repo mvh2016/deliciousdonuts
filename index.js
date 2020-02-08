@@ -124,8 +124,8 @@ client.on('message', message => {
         if (message.member.roles.has('674766572014796818')) {
             var person = message.author
             const tEnd = new discord.RichEmbed()
-                .setTitle(':mega: Delicious Donuts Training Session Ended :mega:')
-                .setDescription('**On behalf of the Delicious Donuts Management team, '+message.author+' is hosting a training right now!**\n\n**↣ Promotions will be handled for dedicated and professional staff members!**\n \n↣ **LRs and MRs are getting the higher possibility to be promoted.**\n \n**↣ HRs and SRs are welcomed to oversee and a deal with problems.**\n\n ')
+                .setTitle(':doughnut: Delicious Donuts Training Session Ended :doughnut:')
+                .setDescription('**The training announced above has concluded. Congratulations to all those promoted.**\nWhy don\'t you go ahead and patrol at the restaurant to fill your quota?\n \nSee you in the next one,\nDelicious Donuts High Command')
                 .setAuthor(message.member.displayName, person.avatarURL)
                 .addField('**:link: Join Link :link:**', 'https://www.roblox.com/games/4616568591/Delicious-Donutss', false)
                 .setFooter('Bot created by CanadianJudgement | Judgement#3155 for help')
