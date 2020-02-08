@@ -127,7 +127,6 @@ client.on('message', message => {
                 .setTitle(':doughnut: Delicious Donuts Training Session Ended :doughnut:')
                 .setDescription('**The training announced above has concluded. Congratulations to all those promoted.**\nWhy don\'t you go ahead and patrol at the restaurant to fill your quota?\n \nSee you in the next one,\nDelicious Donuts High Command')
                 .setAuthor(message.member.displayName, person.avatarURL)
-                .addField('**:link: Join Link :link:**', 'https://www.roblox.com/games/4616568591/Delicious-Donutss', false)
                 .setFooter('Bot created by CanadianJudgement | Judgement#3155 for help')
             trainingChannel = client.channels.get('675375395738222609')
             trainingChannel.send(tEnd)
