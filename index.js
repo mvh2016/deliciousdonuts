@@ -125,7 +125,7 @@ client.on('message', message => {
             var person = message.author
             const tEnd = new discord.RichEmbed()
                 .setTitle(':mega: Delicious Donuts Training Session Ended :mega:')
-                .setDescription('**On behalf of the Delicious Donuts Management team, '+message.author+' is hosting a training right now!**\n\n↣ Promotions will be handled for dedicated and professional staff members!\n↣ LRs and MRs are getting the higher possibility to be promoted.\n↣ HRs and SRs are welcomed to oversee and a deal with problems.\n\n ')
+                .setDescription('**On behalf of the Delicious Donuts Management team, '+message.author+' is hosting a training right now!**\n\n**↣ Promotions will be handled for dedicated and professional staff members!**\n \n↣ **LRs and MRs are getting the higher possibility to be promoted.**\n \n**↣ HRs and SRs are welcomed to oversee and a deal with problems.**\n\n ')
                 .setAuthor(message.member.displayName, person.avatarURL)
                 .addField('**:link: Join Link :link:**', 'https://www.roblox.com/games/4616568591/Delicious-Donutss', false)
                 .setFooter('Bot created by CanadianJudgement | Judgement#3155 for help')
