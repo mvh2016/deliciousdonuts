@@ -100,7 +100,7 @@ client.on('message', message => {
         }
     }
 
-    if (message.content === (`${prefix}trainingstart`)) {
+    if (message.content.startsWith(`${prefix}trainingstart`)) {
         if (message.member.roles.has('674766572014796818')) {
             var person = message.author
             const tStart = new discord.RichEmbed()
@@ -120,13 +120,14 @@ client.on('message', message => {
         }
     }
 
-    if (message.content === (`${prefix}trainingend`)) {
+    if (message.content.startsWith(`${prefix}trainingend`)) {
         if (message.member.roles.has('674766572014796818')) {
             var person = message.author
             const tEnd = new discord.RichEmbed()
-                .setTitle(':doughnut: Delicious Donuts Training Session Ended :doughnut:')
-                .setDescription('**The training announced above has concluded. Congratulations to all those promoted.**\nWhy don\'t you go ahead and patrol at the restaurant to fill your quota?\n \nSee you in the next one,\nDelicious Donuts High Command')
+                .setTitle(':mega: Delicious Donuts Training Session Ended :mega:')
+                .setDescription('**On behalf of the Delicious Donuts Management team, '+message.author+' is hosting a training right now!**\n\n↣ Promotions will be handled for dedicated and professional staff members!\n↣ LRs and MRs are getting the higher possibility to be promoted.\n↣ HRs and SRs are welcomed to oversee and a deal with problems.\n\n ')
                 .setAuthor(message.member.displayName, person.avatarURL)
+                .addField('**:link: Join Link :link:**', 'https://www.roblox.com/games/4616568591/Delicious-Donutss', false)
                 .setFooter('Bot created by CanadianJudgement | Judgement#3155 for help')
             trainingChannel = client.channels.get('675375395738222609')
             trainingChannel.send(tEnd)
@@ -134,6 +135,81 @@ client.on('message', message => {
         }
         else {
             message.channel.send(':warning: You are missing the required permissions (Event Host role required) '+message.author)
+        }
+    }
+
+    if (message.channel.id === '675375517721165825') {
+        if (message.content.startsWith('^^')) {
+            ;
+        }
+        else {
+            if (message.author.id != '674722017659846657') {
+                if (message.member.roles.has('674766572014796818')) {
+                    var splitLog = message.content.split('\n')
+                    if (splitLog.length === 5) {
+                        try {
+                            var hostName = splitLog[0].split(': ')
+                            var attendees = splitLog[1].split(': ')
+                            var length = splitLog[2].split(': ')
+                            var extraPts = splitLog[3].split(': ')
+                            var proof = splitLog[4].split(': ')
+                        }
+                        catch {
+                            message.channel.send(message.author+' It appears you did not input an argument! Make sure all fields are filled.')
+                        }
+                        if (hostName[0] != 'Host') {
+                            message.react('❌')
+                            message.channel.send(message.author+'\n**Declined** \nTry "Host:" instead of '+'"'+hostName[0]+':"')
+                        }
+                        else {
+                            if (attendees[0] != 'Attendees') {
+                                message.react('❌')
+                                message.channel.send(message.author+'\n**Declined** \nTry "Attendees:" instead of '+'"'+attendees[0]+':"')
+                            }
+                            else {
+                                if (length[0] != 'Length') {
+                                    message.react('❌')
+                                    message.channel.send(message.author+'\n**Declined** \nTry "Length:" instead of '+'"'+length[0]+':"')
+                                }
+                                else {
+                                    if (extraPts[0] != 'Extra Points') {
+                                        message.react('❌')
+                                        message.channel.send(message.author+'\n**Declined** \nTry "Extra Points:" instead of '+'"'+extraPts[0]+':"')
+                                    }
+                                    else {
+                                        if (proof[0] != 'Proof') {
+                                            message.react('❌')
+                                            message.channel.send(message.author+'\n**Declined** \nTry "Proof:" instead of '+'"'+proof[0]+':"')
+                                        }
+                                        else {
+                                            const logEmbed = new discord.RichEmbed()
+                                                .setTitle('**:pencil: DD Event Log :pencil:**')
+                                                .setDescription('DD High Command are to check the proof and all other variables of this event log.')
+                                                .addField('Host', hostName[1], false)
+                                                .addField('Attendees', attendees[1], false)
+                                                .addField('Length of Event', length[1], false)
+                                                .addField('Extra Points (for those who did well)', extraPts[1], false)
+                                                .addField('Proof', proof[1], false)
+                                                .setFooter('Bot created by CanadianJudgement | Judgement#3155 for help')
+                                            var finalChannel = client.channels.get('675721032727920665')
+                                            finalChannel.send('<@&666328391208927266> \nA new event log has passed its formatting check, belonging to '+message.member.displayName+'. Please review it.')
+                                            finalChannel.send(logEmbed)
+                                            message.channel.send(message.author+' Your log has been accepted! Wait for HC to review it.')
+                                            message.react('✅')
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    else {
+                        message.channel.send(message.author+'\n**Declined**\n**'+splitLog.length+'** lines submitted, **5** lines expected. Make a new line with SHIFT+ENTER.')
+                    }   
+                }
+                else {
+                    message.channel.send(':warning: You are missing the required permissions (Event Host role required) '+message.author)
+                }
+            }
         }
     }
 })
